@@ -64,10 +64,12 @@
             }
         ]
     },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+"scripts": {
+    "vscode:prepublish": "npm run compile && npm run copy-assets",
+    "compile": "tsc -p ./",
+    "copy-assets": "cp src/styles.js out/styles.js",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run compile && npm run copy-assets && vsce package"
     },
     "devDependencies": {
         "@types/n3": "^1.26.0",

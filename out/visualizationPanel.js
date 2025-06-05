@@ -140,7 +140,8 @@ class VisualizationPanel {
             panelBackground: isDarkTheme ? '#252526' : '#F3F3F3'
         };
         // Create a URI for the styles file
-        const stylesUri = this.panel?.webview.asWebviewUri(vscode.Uri.joinPath(this.extensionUri, 'src', 'styles.js'));
+        const stylesUri = this.panel?.webview.asWebviewUri(vscode.Uri.joinPath(this.extensionUri, 'out', 'styles.js') // Changed from 'src' to 'out'
+        );
         // Escape the data to prevent template literal issues
         const dataStr = JSON.stringify(ontologyData).replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\${/g, '\\${');
         return `<!DOCTYPE html>
