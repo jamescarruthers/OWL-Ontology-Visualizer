@@ -1,0 +1,81 @@
+{
+    "name": "owl-ontology-visualizer",
+    "displayName": "OWL Ontology Visualizer",
+    "description": "Visualize OWL ontologies using Cytoscape.js",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "categories": [
+        "Visualization",
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:owl",
+        "onCommand:owl-visualizer.visualize"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "owl-visualizer.visualize",
+                "title": "Visualize OWL Ontology",
+                "category": "OWL",
+                "icon": "$(graph)"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "owl-visualizer.visualize",
+                    "when": "resourceExtname == .owl || resourceExtname == .rdf || resourceExtname == .ttl",
+                    "group": "navigation"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "command": "owl-visualizer.visualize",
+                    "when": "resourceExtname == .owl || resourceExtname == .rdf || resourceExtname == .ttl",
+                    "group": "navigation"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "owl-visualizer.visualize",
+                    "when": "resourceExtname == .owl || resourceExtname == .rdf || resourceExtname == .ttl",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "languages": [
+            {
+                "id": "owl",
+                "aliases": [
+                    "OWL",
+                    "owl"
+                ],
+                "extensions": [
+                    ".owl",
+                    ".rdf",
+                    ".ttl"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/n3": "^1.26.0",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.74.0",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "cytoscape": "^3.26.0",
+        "n3": "^1.17.2"
+    }
+}

@@ -1,0 +1,111 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ex: <http://example.org/animals#> .
+
+# Ontology Declaration
+<http://example.org/animals> rdf:type owl:Ontology ;
+    rdfs:label "Animal Ontology" ;
+    rdfs:comment "A simple ontology for demonstrating animal classification" .
+
+# Classes
+ex:Animal rdf:type owl:Class ;
+    rdfs:label "Animal" ;
+    rdfs:comment "Any living creature" .
+
+ex:Mammal rdf:type owl:Class ;
+    rdfs:label "Mammal" ;
+    rdfs:subClassOf ex:Animal ;
+    rdfs:comment "Warm-blooded animals that feed milk to their young" .
+
+ex:Bird rdf:type owl:Class ;
+    rdfs:label "Bird" ;
+    rdfs:subClassOf ex:Animal ;
+    rdfs:comment "Animals with feathers and wings" .
+
+ex:Fish rdf:type owl:Class ;
+    rdfs:label "Fish" ;
+    rdfs:subClassOf ex:Animal ;
+    rdfs:comment "Aquatic animals with gills" .
+
+ex:Dog rdf:type owl:Class ;
+    rdfs:label "Dog" ;
+    rdfs:subClassOf ex:Mammal ;
+    rdfs:comment "Domestic canine" .
+
+ex:Cat rdf:type owl:Class ;
+    rdfs:label "Cat" ;
+    rdfs:subClassOf ex:Mammal ;
+    rdfs:comment "Domestic feline" .
+
+ex:Eagle rdf:type owl:Class ;
+    rdfs:label "Eagle" ;
+    rdfs:subClassOf ex:Bird ;
+    rdfs:comment "Large bird of prey" .
+
+ex:Salmon rdf:type owl:Class ;
+    rdfs:label "Salmon" ;
+    rdfs:subClassOf ex:Fish ;
+    rdfs:comment "Anadromous fish" .
+
+# Object Properties
+ex:livesIn rdf:type owl:ObjectProperty ;
+    rdfs:label "lives in" ;
+    rdfs:domain ex:Animal ;
+    rdfs:range ex:Habitat ;
+    rdfs:comment "Relates an animal to its habitat" .
+
+ex:eats rdf:type owl:ObjectProperty ;
+    rdfs:label "eats" ;
+    rdfs:domain ex:Animal ;
+    rdfs:range ex:Food ;
+    rdfs:comment "Relates an animal to its food" .
+
+ex:parentOf rdf:type owl:ObjectProperty ;
+    rdfs:label "parent of" ;
+    rdfs:domain ex:Animal ;
+    rdfs:range ex:Animal ;
+    rdfs:comment "Relates a parent animal to its offspring" .
+
+# Data Properties
+ex:age rdf:type owl:DatatypeProperty ;
+    rdfs:label "age" ;
+    rdfs:domain ex:Animal ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#integer> ;
+    rdfs:comment "The age of an animal in years" .
+
+ex:weight rdf:type owl:DatatypeProperty ;
+    rdfs:label "weight" ;
+    rdfs:domain ex:Animal ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#float> ;
+    rdfs:comment "The weight of an animal in kilograms" .
+
+# Additional Classes
+ex:Habitat rdf:type owl:Class ;
+    rdfs:label "Habitat" ;
+    rdfs:comment "Environment where animals live" .
+
+ex:Food rdf:type owl:Class ;
+    rdfs:label "Food" ;
+    rdfs:comment "What animals eat" .
+
+ex:Forest rdf:type owl:Class ;
+    rdfs:label "Forest" ;
+    rdfs:subClassOf ex:Habitat ;
+    rdfs:comment "Wooded habitat" .
+
+ex:Ocean rdf:type owl:Class ;
+    rdfs:label "Ocean" ;
+    rdfs:subClassOf ex:Habitat ;
+    rdfs:comment "Marine habitat" .
+
+# Named Individuals
+ex:Buddy rdf:type ex:Dog , owl:NamedIndividual ;
+    rdfs:label "Buddy" ;
+    ex:age 5 ;
+    ex:weight 25.5 .
+
+ex:Whiskers rdf:type ex:Cat , owl:NamedIndividual ;
+    rdfs:label "Whiskers" ;
+    ex:age 3 ;
+    ex:weight 4.2 .
